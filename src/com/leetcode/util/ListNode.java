@@ -10,6 +10,15 @@ public class ListNode {
         this.val = v;
     }
 
+    public static ListNode create(int[] nums){
+        ListNode ret = new ListNode(0),prev = ret;
+        for(int num : nums){
+            prev.next = new ListNode(num);
+            prev = prev.next;
+        }
+        return ret.next;
+    }
+
     @Override
     public String toString() {
         return "ListNode{" +
