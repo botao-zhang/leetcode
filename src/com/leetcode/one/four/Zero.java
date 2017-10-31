@@ -1,14 +1,13 @@
-package com.leetcode.one.forty;
+package com.leetcode.one.four;
 
 import java.util.*;
 
 public class Zero {
-    public List<String> wordBreak(String s, Set<String> wordDict) {
+    public List<String> wordBreak(String s, List<String> wordDict) {
         return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
     }
 
-    // DFS function returns an array including all substrings derived from s.
-    List<String> DFS(String s, Set<String> wordDict, HashMap<String, LinkedList<String>>map) {
+    List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>>map) {
         if (map.containsKey(s))
             return map.get(s);
 
@@ -26,11 +25,5 @@ public class Zero {
         }
         map.put(s, res);
         return res;
-    }
-
-
-    public static void main(String[] args) {
-        Zero zero = new Zero();
-        System.out.println(zero.wordBreak("catsanddog",Arrays.asList("cat", "cats", "and", "sand", "dog")));
     }
 }
