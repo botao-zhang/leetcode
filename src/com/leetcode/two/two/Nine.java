@@ -7,54 +7,34 @@ import java.util.List;
 public class Nine {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> ret = new ArrayList<>();
-        if(nums.length < 2){
-            for(int num : nums) ret.add(num);
-            return ret;
-        }
+        if(nums.length == 0) return ret;
+        int fn = nums[0],sn = 0,fc = 0, sc = 0;
 
-        int first = nums[0],firstT = 1;
-        int second = -1,secondT = - 1;
-        for(int i = 1;i<nums.length;i++){
-            if(nums[i] == first) firstT++;
-            else if(secondT > 0){
-                if(second == nums[i]){
-                    secondT++;
-                    if(secondT > firstT){
-                        int tmp = first;
-                        first = second;
-                        second = tmp;
-                        tmp = firstT;
-                        firstT = secondT;
-                        secondT = tmp;
-                    }
-                }else{
-                    firstT--;
-                    secondT--;
-                    if(firstT == 0){
-                        first = nums[i];
-                        firstT = 1;
-                    }else if(secondT == 0){
-                        second = nums[i];
-                        secondT = 1;
-                    }
-                }
+        for(int i = 0;i<nums.length;i++){
+            if(fn == nums[i]){
+                fc++;
+            }else if(sn == nums[i]){
+                sc++;
+            }else if(fc == 0){
+                fn = nums[i];
+                fc = 1;
+            }else if(sc == 0){
+                sn = nums[i];
+                sc = 1;
             }else{
-                secondT = 1;
-                second = nums[i];
+                sc--;
+                fc--;
             }
         }
 
-        if(firstT > 0){
-            int times = 0;
-            for(int i = 0;i<nums.length;i++) if(nums[i] == first) times++;
-            if(times > nums.length / 3) ret.add(first);
+        int ft = 0,st = 0;
+        for(int num : nums){
+            if(num == fn) ft++;
+            else if(num == sn) st++;
         }
 
-        if(secondT > 0){
-            int times = 0;
-            for(int i = 0;i<nums.length;i++) if(nums[i] == second) times++;
-            if(times > nums.length / 3) ret.add(second);
-        }
+        if(ft > nums.length / 3) ret.add(fn);
+        if(st > nums.length / 3) ret.add(sn);
         return ret;
     }
 }
