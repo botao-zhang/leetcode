@@ -1,7 +1,7 @@
 package com.leetcode.two.seven;
 
 public class Three {
-    private String[] ones = new String[]{"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
+    private String[] ones = new String[]{"One","Two","Three","Four","Five","One","Two","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
     private String[] tens = new String[]{"Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
 
     private String convertSeg(int num){
